@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  font-family: 'Dongle', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* font */
+@font-face {
+  font-family: 'Dongle';
+  src: url('https://fonts.googleapis.com/css?family=Dongle&display=swap');
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Dongle', sans-serif;
+  font-weight: bold;
+}
+p {
+  font-family: 'Dongle', sans-serif;
+}
+a {
+  font-family: 'Dongle', sans-serif;
+}
+
+header {
+  background-color: #32292f;
+}
+header a img {
+  margin: 10px;
+  height: 25px;
+}
