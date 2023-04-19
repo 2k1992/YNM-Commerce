@@ -1,5 +1,13 @@
+:root {
+  --NAVCOLOR: #17252a;
+  --BGCOLOR: #d6d6e0;
+  --TEXTCOLOR: #2b2c2c;
+  --PLIGHT: #e2def2;
+  --PDARK: #7455c9;
+}
+
 body {
-  background-color: #dae1de;
+  background-color: var(--BGCOLOR);
   margin: 0;
   font-family: 'Dongle', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,26 +25,61 @@ h2,
 h3 {
   font-family: 'Dongle', sans-serif;
   font-weight: bold;
+  color: var(--TEXTCOLOR);
 }
 p {
   font-family: 'Dongle', sans-serif;
+  color: var(--TEXTCOLOR);
 }
 a {
+  text-decoration: none;
+  color: var(--TEXTCOLOR);
   font-family: 'Dongle', sans-serif;
 }
 
 /* header */
-header {
-  background-color: #32292f;
-}
-header a img {
+
+header img {
   margin: 10px;
   height: 25px;
 }
 
+.site-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  width: 100%;
+  background-color: var(--NAVCOLOR);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 999;
+}
+
 /* main */
 .main {
-  padding: 1rem;
+  flex: 1;
+  margin-top: 1rem;
+}
+
+.homeheading {
+  margin-top: 1rem;
+}
+
+.rating span {
+  color: rgb(27, 148, 67);
+}
+.button {
+  background-color: var(--NAVCOLOR);
+  border: 0px;
+  transition: transform 0.2s;
+  justify-self: center;
+}
+.button:hover {
+  background-color: var(--NAVCOLOR);
+  transform: scale(1.05);
 }
 
 .products {
@@ -46,19 +89,37 @@ header a img {
 }
 .product {
   margin: 1rem;
-  backdrop-filter: blur(2px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-right-color: rgba(255, 255, 255, 0.1);
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  transition: transform 0.2s;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 11px 11px 56px #b1b1b1, -11px -11px 56px #ffffff;
+}
+.product:hover {
+  transform: scale(1.05);
 }
 .product img {
   width: 100%;
-  max-width: 250px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
 }
 .product-info {
   padding: 0.5rem;
+}
+.img-large {
+  max-width: 100%;
+  border-radius: 5px;
+  box-shadow: #17252a;
+}
+
+.card {
+  background-color: var(--BGCOLOR);
+  border-radius: 5px;
+}
+.cardBody {
+  background-color: var(--BGCOLOR);
+}
+
+footer {
+  margin-top: auto;
+  padding: 1rem;
 }
