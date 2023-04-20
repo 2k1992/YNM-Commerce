@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { useEffect, useReducer } from 'react';
-import { useParams } from 'react-router-dom';
+import { useContext, useEffect, useReducer } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -12,6 +12,7 @@ import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { getError } from '../utils';
+import { Store } from '../Store';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -30,6 +31,7 @@ export default function ProductScreen() {
   // to get the slug from the url and show it in the screen
   // use a hook from react-router-dom
   // the name of the hook is useParams
+  const navigate = useNavigate();
   const params = useParams();
   const { slug } = params;
 
@@ -50,6 +52,23 @@ export default function ProductScreen() {
     };
     fetchData();
   }, [slug]);
+
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { cart } = state;
+  const addToCartHandler = async () => {
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    const { data } = await axios.get(`/api/products/${product._id}`);
+    if (data.countInStock < quantity) {
+      window.alert('Sorry. Product is out of stock');
+      return;
+    }
+    ctxDispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...product, quantity },
+    });
+    navigate('/cart');
+  };
 
   return loading ? (
     <LoadingBox />
@@ -115,7 +134,11 @@ export default function ProductScreen() {
                 {product.countInStock > 0 && (
                   <ListGroup.Item className="cardBody">
                     <div className="d-grid">
-                      <Button className="button" variant="primary">
+                      <Button
+                        onClick={addToCartHandler}
+                        className="button"
+                        variant="primary"
+                      >
                         Add to Cart
                       </Button>
                     </div>

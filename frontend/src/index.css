@@ -36,7 +36,9 @@ a {
   color: var(--TEXTCOLOR);
   font-family: 'Dongle', sans-serif;
 }
-
+Link:hover {
+  color: rgb(27, 148, 67);
+}
 /* header */
 
 header img {
@@ -56,6 +58,21 @@ header img {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 999;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link .badge {
+  position: absolute;
+  top: 0px;
+  right: -1px;
+}
+
+.nav-link .cart-icon {
+  font-size: 1.5rem;
+  color: var(--BGCOLOR);
 }
 
 /* main */
@@ -80,6 +97,29 @@ header img {
 .button:hover {
   background-color: var(--NAVCOLOR);
   transform: scale(1.05);
+}
+.button:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+.button-light {
+  background-color: var(--PLIGHT);
+  border: 0px;
+  color: var(--NAVCOLOR);
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+.button-light:hover {
+  background-color: var(--PLIGHT);
+  color: var(--NAVCOLOR);
+  transform: scale(1.05);
+}
+.button-light:active {
+  background-color: var(--PLIGHT);
+  border: 0px;
+  color: var(--NAVCOLOR);
+  font-weight: bold;
 }
 
 .products {
@@ -110,6 +150,26 @@ header img {
   border-radius: 5px;
   box-shadow: #17252a;
 }
+.img-thumbnail {
+  height: 80px;
+}
+.small-container {
+  max-width: 600px;
+}
+
+.iconOnlight {
+  background-color: var(--BGCOLOR);
+  border: 0px;
+  transition: transform 0.2s;
+  justify-self: center;
+}
+.iconOnlight:hover {
+  background-color: var(--BGCOLOR);
+  transform: scale(1.05);
+}
+.iconOnlight:disabled {
+  background-color: var(--BGCOLOR);
+}
 
 .card {
   background-color: var(--BGCOLOR);
@@ -119,6 +179,22 @@ header img {
   background-color: var(--BGCOLOR);
 }
 
+.dark-container {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 2rem;
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #19282d, #152126);
+  box-shadow: 5px 5px 10px #0e171a, -5px -5px 10px #20333a;
+}
+.SI-title {
+  color: var(--PLIGHT);
+  text-align: center;
+}
+.light-text {
+  color: var(--PLIGHT);
+}
 footer {
   margin-top: auto;
   padding: 1rem;
