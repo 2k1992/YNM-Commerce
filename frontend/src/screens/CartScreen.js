@@ -53,17 +53,53 @@ export default function CartScreen() {
           ) : (
             <ListGroup>
               {cartItems.map((item) => (
-                <ListGroup.Item className="card" key={item._id}>
-                  <Row className="align-items-center ">
-                    <Col md={4}>
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="img-fluid rounded img-thumbnail"
-                      ></img>{' '}
-                      <Link to={`/product/${item.slug}`}>{item.name}</Link>
+                <ListGroup.Item
+                  className="card align-items-center"
+                  key={item._id}
+                >
+                  <Row className="align-items-center">
+                    {/* Image and Name for Mobile */}
+                    <Col xs={12} className="d-block d-sm-none">
+                      <Row>
+                        <Col xs={4}>
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="img-fluid rounded img-thumbnail"
+                          />
+                        </Col>
+                        <Col xs={8}>
+                          <div className="mt-2">
+                            <Link to={`/product/${item.slug}`}>
+                              {item.name}
+                            </Link>
+                          </div>
+                        </Col>
+                      </Row>
                     </Col>
-                    <Col md={3}>
+
+                    {/* Image and Name for Desktop */}
+                    <Col md={4} className="d-none d-sm-block">
+                      <Row>
+                        <Col xs={4}>
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="img-fluid rounded img-thumbnail"
+                          />
+                        </Col>
+                        <Col xs={8} className="d-flex align-items-center">
+                          <div className="mt-2">
+                            <Link to={`/product/${item.slug}`}>
+                              {item.name}
+                            </Link>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Col>
+
+                    {/* Quantity and Minus Button */}
+                    <Col xs={6} sm={3} className="mt-2 mt-sm-0">
                       <Button
                         onClick={() =>
                           updateCartHandler(item, item.quantity - 1)
@@ -72,9 +108,9 @@ export default function CartScreen() {
                         variant="light"
                         disabled={item.quantity === 1}
                       >
-                        <i className="fas fa-minus-circle iconOnlight"></i>
-                      </Button>{' '}
-                      <span>{item.quantity}</span>{' '}
+                        <i className="fas fa-minus-circle"></i>
+                      </Button>
+                      <span className="mx-2">{item.quantity}</span>
                       <Button
                         onClick={() =>
                           updateCartHandler(item, item.quantity + 1)
@@ -83,17 +119,23 @@ export default function CartScreen() {
                         variant="light"
                         disabled={item.quantity === item.countInStock}
                       >
-                        <i className="fas fa-plus-circle iconOnlight"></i>
+                        <i className="fas fa-plus-circle"></i>
                       </Button>
                     </Col>
-                    <Col md={3}>{item.price} ETB</Col>
-                    <Col md={2}>
+
+                    {/* Price */}
+                    <Col xs={6} sm={3} className="mt-2 mt-sm-0">
+                      <div className="font-weight-bold">{item.price} ETB</div>
+                    </Col>
+
+                    {/* Trash Button */}
+                    <Col xs={12} sm={2} className="mt-2 mt-sm-0">
                       <Button
-                        className="iconOnlight"
                         onClick={() => removeItemHandler(item)}
+                        className="iconOnlight"
                         variant="light"
                       >
-                        <i className="fas fa-trash iconOnlight"></i>
+                        <i className="fas fa-trash"></i>
                       </Button>
                     </Col>
                   </Row>

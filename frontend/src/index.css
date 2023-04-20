@@ -195,6 +195,50 @@ header img {
 .light-text {
   color: var(--PLIGHT);
 }
+.light-text:hover {
+  color: var(--PLIGHT);
+}
+
+.checkout-steps > div {
+  border-bottom: 0.2rem solid #a0a0a0;
+  color: #a0a0a0;
+}
+.checkout-steps > div.active {
+  border-bottom: 0.2rem solid rgb(27, 148, 67);
+  color: rgb(27, 148, 67);
+}
+.form-check-input:checked + .form-check-label {
+  border-color: rgb(27, 148, 67);
+  color: rgb(27, 148, 67);
+  background-color: var(--BGCOLOR);
+  padding-right: 3px;
+  padding-left: 3px;
+  border-radius: 5px;
+}
+input[type='radio']:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #e6f7e6;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+}
+
+input[type='radio']:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  position: relative;
+  background-color: #e6f7e6;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid rgb(131, 240, 42);
+}
 footer {
   margin-top: auto;
   padding: 1rem;

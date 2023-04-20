@@ -1,28 +1,36 @@
 import Axios from 'axios';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Container, Form, Button, InputGroup } from 'react-bootstrap';
-import { EnvelopeFill, LockFill } from 'react-bootstrap-icons';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import { Helmet } from 'react-helmet-async';
 import { useContext, useEffect, useState } from 'react';
 import { Store } from '../Store';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
 
-export default function SigninScreen() {
+export default function SignupScreen() {
   const navigate = useNavigate();
-  const { search } = useLocation(); // hook from react-router-dom
+  const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectInUrl ? redirectInUrl : '/';
 
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
   const submitHandler = async (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
     try {
-      const { data } = await Axios.post('/api/users/signin', {
+      const { data } = await Axios.post('/api/users/signup', {
+        name,
         email,
         password,
       });
@@ -41,46 +49,50 @@ export default function SigninScreen() {
   }, [navigate, redirect, userInfo]);
 
   return (
-    <Container className="dark-container small-container">
+    <Container className="small-container dark-container">
       <Helmet>
-        <title>Sign In</title>
+        <title>Sign Up</title>
       </Helmet>
-      <h1 className="my-3 SI-title">Sign In</h1>
+      <h1 className="my-3 SI-title">Sign Up</h1>
       <Form onSubmit={submitHandler}>
+        <Form.Group className="mb-3" controlId="name">
+          <Form.Label className="light-text">Name</Form.Label>
+          <Form.Control onChange={(e) => setName(e.target.value)} required />
+        </Form.Group>
+
         <Form.Group className="mb-3" controlId="email">
           <Form.Label className="light-text">Email</Form.Label>
-          <InputGroup>
-            <InputGroup.Text>
-              <EnvelopeFill />
-            </InputGroup.Text>
-            <Form.Control
-              type="email"
-              required
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </InputGroup>
+          <Form.Control
+            type="email"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="password">
           <Form.Label className="light-text">Password</Form.Label>
-          <InputGroup>
-            <InputGroup.Text>
-              <LockFill />
-            </InputGroup.Text>
+          <Form.Control
+            type="password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Form.Group className="mb-3" controlId="confirmPassword">
+            <Form.Label className="light-text">Confirm Password</Form.Label>
             <Form.Control
               type="password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
               required
-              onChange={(e) => setPassword(e.target.value)}
             />
-          </InputGroup>
+          </Form.Group>
         </Form.Group>
-        <div className="mb-3 d-flex justify-content-center ">
+        <div className="mb-3 d-flex justify-content-center">
           <Button className="button-light" type="submit">
-            Sign In
+            Sign Up
           </Button>
         </div>
-        <div className="mb-3 text-light d-flex justify-content-center">
-          <Link className="light-text" to={`/signup?redirect=${redirect}`}>
-            Create New Account
+        <div className="mb-3 light-text">
+          Already have an account?{' '}
+          <Link className="light-text" to={`/signin?redirect=${redirect}`}>
+            Sign-In
           </Link>
         </div>
       </Form>
