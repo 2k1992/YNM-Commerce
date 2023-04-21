@@ -106,8 +106,10 @@ header img {
 .button-light {
   background-color: var(--PLIGHT);
   border: 0px;
+  padding: 3px;
   color: var(--NAVCOLOR);
   font-weight: bold;
+  border-radius: 5px;
   transition: transform 0.2s;
 }
 .button-light:hover {
@@ -198,15 +200,18 @@ header img {
 .light-text:hover {
   color: var(--PLIGHT);
 }
-
-.checkout-steps > div {
-  border-bottom: 0.2rem solid #a0a0a0;
-  color: #a0a0a0;
+/* checkout steps */
+.checkout-steps {
+  margin-top: 1rem;
+  height: 10px;
+  border-radius: 5px;
 }
-.checkout-steps > div.active {
-  border-bottom: 0.2rem solid rgb(27, 148, 67);
-  color: rgb(27, 148, 67);
+.checkout-steps .progress-bar {
+  border-bottom: 0.2rem solid rgb(22, 124, 42);
+  background-color: rgb(27, 148, 67);
+  border-radius: 10px;
 }
+/* checkout steps end*/
 .form-check-input:checked + .form-check-label {
   border-color: rgb(27, 148, 67);
   color: rgb(27, 148, 67);
@@ -239,6 +244,18 @@ input[type='radio']:checked:after {
   visibility: visible;
   border: 2px solid rgb(131, 240, 42);
 }
+.edit {
+  background-color: var(--NAVCOLOR);
+  border: 0px;
+  padding: 5px;
+  color: var(--PLIGHT);
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+.card-Body {
+  background-color: var(--NAVCOLOR);
+}
+
 footer {
   margin-top: auto;
   padding: 1rem;

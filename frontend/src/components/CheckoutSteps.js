@@ -1,14 +1,16 @@
 import React from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { ProgressBar } from 'react-bootstrap';
 
 export default function CheckoutSteps(props) {
-  return (
-    <Row className="checkout-steps">
-      <Col className={props.step1 ? 'active' : ''}>Sign-In</Col>
-      <Col className={props.step2 ? 'active' : ''}>Shipping</Col>
-      <Col className={props.step3 ? 'active' : ''}>Payment</Col>
-      <Col className={props.step4 ? 'active' : ''}>Place Order</Col>
-    </Row>
-  );
+  const steps = [
+    { title: 'Sign-In', href: '/signin', active: props.step1 },
+    { title: 'Address', href: '/shipping', active: props.step2 },
+    { title: 'Payment', href: '/payment', active: props.step3 },
+    { title: 'Place Order', href: '/placeorder', active: props.step4 },
+  ];
+
+  const completedSteps = steps.filter((step) => step.active).length - 1;
+  const progress = (completedSteps / (steps.length - 1)) * 100;
+
+  return <ProgressBar now={progress} label={' '} className="checkout-steps" />;
 }
