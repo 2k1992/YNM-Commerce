@@ -24,6 +24,7 @@ export default function ShippingAddressScreen() {
       navigate('/signin?redirect=/shipping');
     }
   }, [userInfo, navigate]);
+  const [email, setEmail] = useState(shippingAddress.email || '');
   const [country, setCountry] = useState(shippingAddress.country || '');
   const submitHandler = (e) => {
     e.preventDefault();
@@ -35,6 +36,7 @@ export default function ShippingAddressScreen() {
         city,
         postalCode,
         country,
+        email,
       },
     });
     localStorage.setItem(
@@ -45,6 +47,7 @@ export default function ShippingAddressScreen() {
         city,
         postalCode,
         country,
+        email,
       })
     );
     navigate('/payment');
@@ -110,6 +113,16 @@ export default function ShippingAddressScreen() {
                 <Form.Control
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </div>
+            <div className="col-12 col-md-6">
+              <Form.Group className="mb-3" controlId="email">
+                <Form.Label className="light-text">Email</Form.Label>
+                <Form.Control
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </Form.Group>

@@ -56,6 +56,7 @@ export default function PlaceOrderScreen() {
           shippingPrice: cart.shippingPrice,
           taxPrice: cart.taxPrice,
           totalPrice: cart.totalPrice,
+          email: cart.email,
         },
         {
           headers: {
@@ -94,6 +95,8 @@ export default function PlaceOrderScreen() {
                 <Card.Text className="text-light">
                   <strong className="text-light">Name:</strong>{' '}
                   {cart.shippingAddress.fullName} <br />
+                  <strong className="text-light">Email:</strong>{' '}
+                  {cart.shippingAddress.email} <br />
                   <strong className="text-light">Address: </strong>{' '}
                   {cart.shippingAddress.address},{cart.shippingAddress.city},{' '}
                   {cart.shippingAddress.postalCode},
