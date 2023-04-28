@@ -255,7 +255,14 @@ input[type='radio']:checked:after {
 .card-Body {
   background-color: var(--NAVCOLOR);
 }
-
+.cart {
+  width: 35px;
+}
+.burger {
+  background-color: #cccccc;
+  width: 40px;
+  padding: 3px;
+}
 footer {
   margin-top: auto;
   padding: 1rem;
