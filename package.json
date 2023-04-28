@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "yarn --cwd backend install && yarn --cwd frontend install && yarn --cwd frontend run build",
+    "build": "cd backend && npm install && cd ../frontend && npm install && npm run build",
     "start": "node backend/server.js"
   },
   "repository": "https://github.com/2k1992/YNM-Commerce.git",
