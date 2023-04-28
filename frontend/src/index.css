@@ -263,6 +263,38 @@ input[type='radio']:checked:after {
   width: 40px;
   padding: 3px;
 }
+.btn-outline-primary {
+  background-color: rgb(27, 148, 67);
+  color: #000000;
+}
+.textAdmin {
+  color: rgb(52, 207, 104);
+}
+.text-bold {
+  font-weight: bold;
+}
+/* sidebar */
+.navbar-brand {
+  font-weight: bold;
+}
+.side-navbar {
+  width: 240px;
+  height: 100%;
+  position: absolute;
+  left: -300px;
+  background-color: #100901;
+  transition: 0.5s;
+}
+
+.site-container {
+  transition: 0.4s;
+}
+.active-cont {
+  margin-left: 240px;
+}
+.active-nav {
+  left: 0;
+}
 footer {
   margin-top: auto;
   padding: 1rem;
