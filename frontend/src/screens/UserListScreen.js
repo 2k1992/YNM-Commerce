@@ -101,17 +101,16 @@ export default function UserListScreen() {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>NAME</th>
               <th>EMAIL</th>
               <th>IS ADMIN</th>
               <th>ACTIONS</th>
+              <th>ID</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user) => (
               <tr key={user._id}>
-                <td>{user._id}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.isAdmin ? 'YES' : 'NO'}</td>
@@ -119,6 +118,7 @@ export default function UserListScreen() {
                   <Button
                     type="button"
                     variant="light"
+                    className="Edit"
                     onClick={() => navigate(`/admin/user/${user._id}`)}
                   >
                     Edit
@@ -127,11 +127,13 @@ export default function UserListScreen() {
                   <Button
                     type="button"
                     variant="light"
+                    className="delete"
                     onClick={() => deleteHandler(user)}
                   >
                     Delete
                   </Button>
                 </td>
+                <td>{user._id}</td>
               </tr>
             ))}
           </tbody>

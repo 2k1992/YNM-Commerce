@@ -37,7 +37,7 @@ export default function PaymentMethodScreen() {
         </Helmet>
         <h1 className="my-3 SI-title">Payment Method</h1>
         <Form onSubmit={submitHandler}>
-          <div className="mb-3 ">
+          {/* <div className="mb-3 ">
             <Form.Check
               className="light-text radio"
               type="radio"
@@ -47,7 +47,7 @@ export default function PaymentMethodScreen() {
               checked={paymentMethodName === 'Chapa'}
               onChange={(e) => setPaymentMethod(e.target.value)}
             />
-          </div>
+          </div> */}
           <div className="mb-3">
             <Form.Check
               className="light-text radio"

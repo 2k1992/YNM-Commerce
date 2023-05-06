@@ -252,6 +252,25 @@ input[type='radio']:checked:after {
   border-radius: 5px;
   transition: transform 0.2s;
 }
+.Edit {
+  background-color: rgb(27, 148, 67);
+  width: 57px;
+  color: var(--PLIGHT);
+  border: 2px;
+  padding: 5px;
+  border-radius: 5px;
+  transition: transform 0.2s;
+  margin-bottom: 1px;
+}
+.delete {
+  background-color: rgb(168, 20, 15);
+  color: var(--PLIGHT);
+  width: 57px;
+  border: 2px;
+  padding: 5px;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
 .card-Body {
   background-color: var(--NAVCOLOR);
 }

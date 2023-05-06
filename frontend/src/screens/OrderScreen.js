@@ -47,52 +47,52 @@ function reducer(state, action) {
       return state;
   }
 }
-function Pay({ order }) {
-  const {
-    shippingAddress: { fullName, email },
-    _id: orderId,
-    totalPrice: amount,
-  } = order;
+// function Pay({ order }) {
+//   const {
+//     shippingAddress: { fullName, email },
+//     _id: orderId,
+//     totalPrice: amount,
+//   } = order;
 
-  return (
-    <div>
-      <form method="POST" action="https://api.chapa.co/v1/hosted/pay">
-        <input
-          type="hidden"
-          name="public_key"
-          value="CHAPUBK_TEST-GqnUAdPyZFp0PnxJqd8gUFV2Xod0iOCL"
-        />
-        <input type="hidden" name="tx_ref" value={orderId} />
-        <input type="hidden" name="amount" value={amount} />
-        <input type="hidden" name="currency" value="ETB" />
-        <input type="hidden" name="email" value={email} />
-        <input type="hidden" name="first_name" value={fullName.split(' ')[0]} />
-        <input type="hidden" name="last_name" value={fullName.split(' ')[1]} />
-        <input type="hidden" name="title" value="Let us do this" />
-        <input
-          type="hidden"
-          name="description"
-          value="Paying with Confidence with chapa"
-        />
-        <input
-          type="hidden"
-          name="logo"
-          value="https://yourcompany.com/logo.png"
-        />
-        <input
-          type="hidden"
-          name="callback_url"
-          value="https://example.com/callbackurl"
-        />
-        <input type="hidden" name="return_url" value="https://localhost:3000" />
-        <input type="hidden" name="meta[title]" value="test" />
-        <button className="button-light w-100" type="submit">
-          Pay With Chapa
-        </button>
-      </form>
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <form method="POST" action="https://api.chapa.co/v1/hosted/pay">
+//         <input
+//           type="hidden"
+//           name="public_key"
+//           value="CHAPUBK_TEST-GqnUAdPyZFp0PnxJqd8gUFV2Xod0iOCL"
+//         />
+//         <input type="hidden" name="tx_ref" value={orderId} />
+//         <input type="hidden" name="amount" value={amount} />
+//         <input type="hidden" name="currency" value="ETB" />
+//         <input type="hidden" name="email" value={email} />
+//         <input type="hidden" name="first_name" value={fullName.split(' ')[0]} />
+//         <input type="hidden" name="last_name" value={fullName.split(' ')[1]} />
+//         <input type="hidden" name="title" value="Let us do this" />
+//         <input
+//           type="hidden"
+//           name="description"
+//           value="Paying with Confidence with chapa"
+//         />
+//         <input
+//           type="hidden"
+//           name="logo"
+//           value="https://yourcompany.com/logo.png"
+//         />
+//         <input
+//           type="hidden"
+//           name="callback_url"
+//           value="https://example.com/callbackurl"
+//         />
+//         <input type="hidden" name="return_url" value="https://google.com " />
+//         <input type="hidden" name="meta[title]" value="test" />
+//         <button className="button-light w-100" type="submit">
+//           Pay With Chapa
+//         </button>
+//       </form>
+//     </div>
+//   );
+// }
 
 export default function OrderScreen() {
   const { state } = useContext(Store);
@@ -365,7 +365,7 @@ export default function OrderScreen() {
                         <LoadingBox />
                       ) : (
                         <div>
-                          <Pay order={order} className="w-100" />
+                          {/* <Pay order={order} className="w-100" /> */}
                           <PayPalButtons
                             createOrder={createOrder}
                             onApprove={onApprove}
